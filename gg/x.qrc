@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>picture/1630139607218.png</file>
+        <file>picture/background.jpeg</file>
+        <file>picture/logo.jpeg</file>
+        <file>picture/background2.jfif</file>
+    </qresource>
+    <qresource prefix="/new/prefix1">
+        <file>sound/backmusic.mp3</file>
+        <file>sound/button.wav</file>
+    </qresource>
+</RCC>
