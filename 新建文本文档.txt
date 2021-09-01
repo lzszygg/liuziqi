@@ -1,0 +1,166 @@
+ 1.设置精度
+#include <iostream>
+#include <iomanip>
+//用setprecision(n)设置精度，其中n表示精确到小数点后n位
+using namespace std;
+int main()
+{
+        cout<<fixed<<setprecision(2)<<123.8888<<endl;
+        cout<<fixed<<setprecision(2)<<12<<endl;
+        return 0;}
+2.当前时间
+通过结构指针访问其成员，在使用函数库时也有用。下面程序显示当前日期、时间和星期。其中tm是一个结构，其成员包含了年月日、时分秒等。
+#define _CRT_SECURE_NO_WARNINGS
+#include <iostream>
+#include <time.h>
+using namespace std;
+int main(){
+	time_t ltime = time(NULL);			//取得当前时间，time_t是当前秒单位计时
+	tm * now = localtime(&ltime);		//转换为本地时间,tm是一个结构类型
+	int year = now->tm_year + 1900;		//取得当前年份
+	int month = now->tm_mon + 1;		//取得当前月份,0-11
+	int day = now->tm_mday;				//取得当前日,1-31
+	int hour = now->tm_hour;
+	int min = now->tm_min;
+	int sec = now->tm_sec;
+	int week = now->tm_wday;			//0-6，0是周日,1是周一
+	cout<<year<<"-"<<month<<"-"<<day<<" "<<hour<<":"<<min<<":"<<sec
+<<" 星期"<<week<<endl; 
+	return 0;
+}
+第1行宏定义是因为VS对localtime函数调用报错，并建议调用安全函数localtime_s，但DevC++不支持。上面代码也能在DevC++运行。
+3.用指针处理字符串、 
+用指针p来处理字符串，*p是所指字符，p++后移指针，比数组下标访问更灵活。
+例8-8 用指针实现字符串求串长和串拷贝。
+#include<iostream>
+using namespace std;
+size_t strLength(const char * s){
+	if (s == NULL) return 0;
+	const char *s1 = s;
+	while (*s++ != 0);
+	return s - s1 - 1;
+}
+size_t strCopy(char *to, const char *from, size_t n){
+	if (to == NULL || from == NULL || n == 0) 
+		return 0;
+	size_t i = 0;
+	while (i < n - 1 && *from != 0){
+		*to++ = *from++;
+		i++;
+	}
+	*to = 0;
+	return i;
+}
+int main(){
+	char *s1 = "Java Programming";
+	char s2[] = "C++ Programming";
+	s1 = s2;
+	s1 = "C/C++ Programming";
+	cout<<strLength(s1)<<":"<<s1<<endl;
+	s1 += 6;
+	cout<<strLength(s1)<<":"<<s1<<endl;
+	cout<<strLength(s2+4)<<":"<<s2+4<<endl;
+	cout<<strLength("")<<endl;
+	char *s3= NULL;
+	cout<<strLength(s3)<<endl;
+	char s4[8] = "No Use";
+	cout<<strCopy(s4, s1, 8)<<endl;
+	cout<<s4<<endl;
+	return 0;
+}
+执行程序，输出如下：
+
+17:C/C++ Programming
+11:Programming
+11:Programming
+0
+0
+7
+Program
+
+读者可自行尝试其它测试。
+注意，如果函数的形参为char *，它往往要求函数调用提供一个字符串实参，而不是提供指向单个字符的地址。这是C语言字符指针表示字符串的习惯用法。
+
+4. 对一个字符串数组按升序排序，并输出结果。
+#include <iostream>
+#include <string.h>
+#include <algorithm>//sort
+using namespace std;
+int main(void){
+	char * week[] = {	"Monday",
+						"Tuesday",
+						"Wednesday",
+						"Thursday",
+						"Friday", 
+						"Saturday",
+						"Sunday"};
+	const int num = sizeof(week)/ sizeof(char *);	//计算元素个数
+	sort(week, week + num,[](auto s1,auto s2){return strcmp(s1,s2)< 0;});
+	for (auto s : week)						//输出排序后的结果
+		cout << s << endl;
+	return 0;
+}
+程序中调用了<algorithm>中的排序sort函数，前2个实参确定要排序的元素范围，第3个实参用一个lambda表达式确定排序规则。
+执行程序，输出如下：
+
+Friday
+Monday
+Saturday
+Sunday
+Thursday
+Tuesday
+Wednesday
+
+在排序函数调用之前的week数组与调用之后的结果如下图所示。
+排序并未改变各字符串的存储内容，而只是改变了指针数组week中的指针的值，即改变了各个串的索引，避免对字符串内容的交换所需要的串复制，提高执行效率。这是指针运用的一个重要例子。
+5.有疑问  例8-16 编写一个函数trim将一个字符串前后空格去掉，并返回结果串的首地址。
+例如，对"  ab c  "处理后的结果应为"ab c"。
+设计思路：分3个步骤。先收缩串尾的空格，再收缩串头的空格，最后各字符前移：
+#include<iostream>
+#include<string.h>
+using namespace std;
+char * trim(char * s){
+	if (s == NULL) 	return NULL;
+	if (strlen(s) == 0) return s;
+	char *tail = s + strlen(s) - 1;		//1，收缩串尾的空格
+	while (*tail == ' ') tail--;
+	if(tail < s + strlen(s) - 1) 
+		*(tail + 1) = '\0';
+	char * head = s;					//2，收缩串头的空格
+	while (*head == ' ') head++;
+	char *h = s;						//3，各字符前移
+	if(head > h)
+		while (*h++ = *head++);
+	return s; 
+}
+int main(){
+	char s[] = "  ab c  ";
+	cout<<strlen(s);						//输出原串长
+	char * s1 = trim(s);
+	cout<<":"<<s1<<":"<<strlen(s1)<<endl;	//输出处理之后的串及长度
+	return 0;
+}
+函数返回指针，但不能返回函数内的非静态局部变量的地址。这是因为函数内部非静态局部变量都存放在栈中。当函数返回时栈弹出，局部变量都被撤销，此时若再通过返回指针来访问已被撤销的数据，就会导致严重错误。
+函数返回指针有如下几种情形：
+	返回指针是某个形参指针。该形参所指对象表示计算结果。
+	返回局部静态变量的地址。
+	返回全局变量的地址。很少用。
+	返回动态创建的对象的地址，后面将介绍。
+指针作为形参可返回计算结果。引用变量作为形参也能起到相同作用。
+6.随机数
+void getRandom(int a[], int n)
+{
+	srand(time(NULL));
+	for(int i = 0; i < n; i++)
+		a[i] = rand() % 100;
+}
+
+6.输入字符
+ll read(){
+	ll x=0,f=1;char ch=getchar();
+	while(ch<'0'||ch>'9'){if(ch=='-')f=-1;ch=getchar();}
+	while(ch>='0'&&ch<='9')x=(x<<3)+(x<<1)+ch-'0',ch=getchar();
+	return x*f;
+}
+
+
