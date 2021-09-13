@@ -26,11 +26,33 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
     begin.cpp
 
 HEADERS += \
         mainwindow.h \
     begin.h
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+=======
+    begin.cpp \
+    game.cpp
+
+HEADERS += \
+        mainwindow.h \
+    begin.h \
+    game.h
+>>>>>>> 383d266 (添加了游戏类)
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
 
 FORMS += \
         mainwindow.ui
@@ -38,3 +60,15 @@ QT  +=  multimedia
 
 RESOURCES += \
     x.qrc
+<<<<<<< HEAD
+CONFIG += C++11
+=======
+<<<<<<< HEAD
+CONFIG += C++11
+=======
+<<<<<<< HEAD
+=======
+CONFIG += C++11
+>>>>>>> 383d266 (添加了游戏类)
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)

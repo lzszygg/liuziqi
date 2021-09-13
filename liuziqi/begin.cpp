@@ -4,6 +4,24 @@
 #include<QPaintEvent>
 #include<QSound>
 #include<QBitmap>
+<<<<<<< HEAD
+
+
+
+=======
+<<<<<<< HEAD
+
+
+
+=======
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 383d266 (添加了游戏类)
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
 #define BACK "://picture/background.jpeg"
 #define BUTTON_PLAY ":/ne/sound/button.wav"   //按钮提示音
 
@@ -12,6 +30,24 @@ begin::begin(QWidget *parent) : QWidget(parent)
     setWindowTitle("六子棋");
     this->setWindowIcon(QIcon("://picture/logo.jpeg")); //设置应用图标
     this->setFixedSize(1280,880);
+<<<<<<< HEAD
+
+
+
+=======
+<<<<<<< HEAD
+
+
+
+=======
+<<<<<<< HEAD
+=======
+
+
+
+>>>>>>> 383d266 (添加了游戏类)
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
     button1=new QPushButton(this);
     button1->move(QPoint(450,600));  //按钮移动
     button1->setFlat(true);     //透明效果
@@ -40,6 +76,29 @@ void begin::paintEvent(QPaintEvent *event)
     {
         button1->setFlat(true);
     }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
+    if(button2->underMouse())
+    {
+        button2->setFlat(false);
+    }
+    else
+    {
+        button2->setFlat(true);
+    }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 383d266 (添加了游戏类)
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
     QPainter painter(this);
     painter.setRenderHint(QPainter::Antialiasing, true); // 抗锯齿,防止图像走样
     painter.drawPixmap(0,0,this->width(),this->height(),QPixmap(BACK));  //背景图片

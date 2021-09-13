@@ -3,6 +3,18 @@
         <file>picture/1630139607218.png</file>
         <file>picture/background.jpeg</file>
         <file>picture/logo.jpeg</file>
+<<<<<<< HEAD
+        <file>picture/background2.jfif</file>
+=======
+<<<<<<< HEAD
+        <file>picture/background2.jfif</file>
+=======
+<<<<<<< HEAD
+=======
+        <file>picture/background2.jfif</file>
+>>>>>>> 383d266 (添加了游戏类)
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
     </qresource>
     <qresource prefix="/new/prefix1">
         <file>sound/backmusic.mp3</file>
