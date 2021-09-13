@@ -1,5 +1,13 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
 #include<QPushButton>
 #include<QMenuBar>
 #include<QMenu>
@@ -18,12 +26,28 @@
 //const int flag_length=11; //落子标记边长
 //const int r=17; //棋子半径
 //const int ai_time=700;  //模拟ai思考时间
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 383d266 (添加了游戏类)
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+      page.show();
+=======
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
     this->setFixedSize(1280,880);
     this->setWindowIcon(QIcon("://picture/logo.jpeg"));
     ui->pushButton->setText("返回主页");
@@ -61,12 +85,27 @@ void MainWindow::changewin()
 {
     this->show();  //游戏界面显示
     page.hide();   //子窗口隐藏
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 383d266 (添加了游戏类)
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
 
 void MainWindow::on_pushButton_clicked()
 {
@@ -83,3 +122,10 @@ void MainWindow::paintEvent(QPaintEvent *event)
 
 
 }
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> 383d266 (添加了游戏类)
+>>>>>>> e8f8e70 (添加了游戏类)
+>>>>>>> 6f1b7fc (添加了游戏类)
